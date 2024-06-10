@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nist_flutter_project/fruits_page.dart';
+import 'package:nist_flutter_project/widgets/custom_scaffold.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,34 +12,12 @@ class _HomeState extends State<Home> {
   bool isGrid = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("List View"),
-        backgroundColor: Colors.teal,
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.list,
-            ),
-            onPressed: () {
-              isGrid = false;
-              setState(() {});
-            },
-          ),
-          IconButton(
-            onPressed: () {
-              isGrid = true;
-              setState(() {});
-            },
-            icon: const Icon(
-              Icons.grid_3x3,
-            ),
-          ),
-        ],
-      ),
-      body: FruitsPage(
-        isGrid: isGrid,
-      ),
+    return CustomScaffold(
+      title: "Home",
+      body: Text("Home Page"),
+      onOressedLeadingButton: (ctx) {
+        Scaffold.of(ctx).openDrawer();
+      },
     );
   }
 }
